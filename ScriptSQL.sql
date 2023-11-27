@@ -158,6 +158,7 @@ CREATE TABLE Absences(
     id_Student BIGINT ,
     id_Course BIGINT ,
     reason VARCHAR(32),
+    document BYTEA, -- Utilisation de BYTEA pour stocker un document binaire
     justify BOOLEAN,
     PRIMARY KEY (id_Student, id_Course),
     FOREIGN KEY (id_Student) REFERENCES Students(id),
