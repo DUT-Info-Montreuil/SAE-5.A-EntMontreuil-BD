@@ -95,6 +95,9 @@ CREATE TABLE Materials(
     PRIMARY KEY (id)
 );
 
+CREATE UNIQUE INDEX materials_equipment_unique ON Materials (LOWER(equipment));
+
+
 CREATE TABLE Classroom(
     id SERIAL,
     name VARCHAR(32),
