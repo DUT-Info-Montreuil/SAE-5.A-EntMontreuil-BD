@@ -49,8 +49,8 @@ INSERT INTO Classroom (name, capacity) VALUES ('Salle1', 30);
 INSERT INTO Classroom (name, capacity) VALUES ('Salle2', 40);
 
 -- Insertion des cours
-INSERT INTO Courses (startTime, endTime, dateCourse, control, id_Resource, id_Tp, id_Td, id_Promotion, id_Teacher, id_classroom) VALUES ('08:00:00', '10:00:00', '2023-11-15', true, 1, 1, 1, 1, 4, 1);
-INSERT INTO Courses (startTime, endTime, dateCourse, control, id_Resource, id_Tp, id_Td, id_Promotion, id_Teacher, id_classroom) VALUES ('10:30:00', '12:30:00', '2023-11-15', true, 2, 2, 2, 2, 4, 2);
+INSERT INTO Courses (startTime, endTime, dateCourse, control, id_Resource, id_Tp, id_Td, id_Promotion, id_Teacher, id_classroom) VALUES ('08:00:00', '10:00:00', '2023-11-15', true, 1, 1, 1, 1, 1, 1);
+INSERT INTO Courses (startTime, endTime, dateCourse, control, id_Resource, id_Tp, id_Td, id_Promotion, id_Teacher, id_classroom) VALUES ('10:30:00', '12:30:00', '2023-11-15', true, 2, 2, 2, 2, 1, 2);
 
 -- Insertion des étudiants
 INSERT INTO Students (nip, ine, apprentice, id_User, id_Td, id_Tp, id_Promotion) VALUES (123456,789455, true, 3, 1, 1, 1);
