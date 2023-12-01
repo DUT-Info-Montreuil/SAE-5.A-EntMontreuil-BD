@@ -97,7 +97,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER trigger_update_logs_on_user_delete
+CREATE OR REPLACE TRIGGER trigger_update_logs_on_user_delete
 BEFORE DELETE ON Users
 FOR EACH ROW
 EXECUTE FUNCTION update_logs_on_user_delete();
@@ -114,7 +114,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER trigger_update_reminders_on_user_delete
+CREATE OR REPLACE TRIGGER trigger_update_reminders_on_user_delete
 BEFORE DELETE ON Users
 FOR EACH ROW
 EXECUTE FUNCTION update_reminders_on_user_delete();
@@ -147,7 +147,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER trigger_delete_commentary_on_teacher_delete
+CREATE OR REPLACE TRIGGER trigger_delete_commentary_on_teacher_delete
 BEFORE DELETE ON Teachers
 FOR EACH ROW
 EXECUTE FUNCTION delete_commentary_on_teacher_delete();
