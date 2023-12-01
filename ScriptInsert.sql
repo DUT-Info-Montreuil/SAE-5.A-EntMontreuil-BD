@@ -63,7 +63,13 @@ INSERT INTO Absences (id_Student, id_Course, reason, justify) VALUES (2, 2, 'Rai
 INSERT INTO Logs (id_User, modification) VALUES (1, 'Modification 1');
 INSERT INTO Logs (id_User, modification) VALUES (2, 'Modification 2');
 
+-- Insertion des rappels
+INSERT INTO Reminder (user_id, reminder_text, reminder_date) VALUES (1, 'Rappel pour la réunion', '2023-12-01 09:00:00');
+INSERT INTO Reminder (user_id, reminder_text, reminder_date) VALUES (2, 'Rappel pour examen', '2023-12-02 14:00:00');
 
+-- Insertion des commentaires
+INSERT INTO Commentary (teacher_id, course_id, comment_text) VALUES (1, 1, 'Très bon travail des étudiants.');
+INSERT INTO Commentary (teacher_id, course_id, comment_text) VALUES (2, 2, 'Nécessite des améliorations, veuillez réviser.');
 
 -- Création du déclencheur
 CREATE OR REPLACE FUNCTION delete_absences_on_student_delete()
