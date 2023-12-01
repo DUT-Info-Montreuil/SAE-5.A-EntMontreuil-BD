@@ -63,13 +63,15 @@ INSERT INTO Logs (id_User, modification) VALUES (1, 'Modification 1');
 INSERT INTO Logs (id_User, modification) VALUES (1, 'Modification 2');
 
 -- Insertion des rappels
-INSERT INTO Reminder (user_id, reminder_text, reminder_date) VALUES (1, 'Rappel pour la réunion', '2023-12-01 09:00:00');
-INSERT INTO Reminder (user_id, reminder_text, reminder_date) VALUES (2, 'Rappel pour examen', '2023-12-02 14:00:00');
+INSERT INTO Reminders (id_user, reminder_text, reminder_date) VALUES (1, 'Rappel pour la réunion', '2023-12-01 09:00:00');
+INSERT INTO Reminders (id_user, reminder_text, reminder_date) VALUES (2, 'Rappel pour examen', '2023-12-02 14:00:00');
 
 -- Insertion des commentaires
-INSERT INTO Commentary (teacher_id, course_id, comment_text) VALUES (1, 1, 'Très bon travail des étudiants.');
+INSERT INTO Commentary (id_Teacher, id_Course, comment_text) VALUES (1, 1, 'Très bon travail des étudiants.');
 
 -- Création du déclencheur
+
+--supprime chaque absences de l'étudiant supprimer
 CREATE OR REPLACE FUNCTION delete_absences_on_student_delete()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -83,4 +85,36 @@ BEFORE DELETE ON ent.Students
 FOR EACH ROW
 EXECUTE FUNCTION delete_absences_on_student_delete();
 
+--met id_user a null dans la table logs quand l'users associé est supprimé
+CREATE OR REPLACE FUNCTION update_logs_on_user_delete()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE Logs
+    SET id_User = NULL
+    WHERE id_User = OLD.id;
 
+    RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_update_logs_on_user_delete
+AFTER DELETE ON Users
+FOR EACH ROW
+EXECUTE FUNCTION update_logs_on_user_delete();
+
+--met id_user a null dans la table reminders quand l'users associé est supprimé
+CREATE OR REPLACE FUNCTION update_reminders_on_user_delete()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE Reminders
+    SET id_User = NULL
+    WHERE id_User = OLD.id;
+
+    RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_update_reminders_on_user_delete
+AFTER DELETE ON Users
+FOR EACH ROW
+EXECUTE FUNCTION update_reminders_on_user_delete();
