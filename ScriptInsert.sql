@@ -118,3 +118,39 @@ CREATE TRIGGER trigger_update_reminders_on_user_delete
 AFTER DELETE ON Users
 FOR EACH ROW
 EXECUTE FUNCTION update_reminders_on_user_delete();
+
+----met id_teacher a null dans la table courses quand le teacher associé est supprimé
+CREATE OR REPLACE FUNCTION update_courses_on_teacher_delete()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE Courses
+    SET id_Teacher = NULL
+    WHERE id_Teacher = OLD.id;
+
+    RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_update_courses_on_teacher_delete
+AFTER DELETE ON Teachers
+FOR EACH ROW
+EXECUTE FUNCTION update_courses_on_teacher_delete();
+
+--supprime les commentaires de l'enseignant associé quand l'enseignant est supprimé
+CREATE OR REPLACE FUNCTION delete_commentary_on_teacher_delete()
+RETURNS TRIGGER AS $$
+BEGIN
+    DELETE FROM Commentary
+    WHERE id_Teacher = OLD.id;
+
+    RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_delete_commentary_on_teacher_delete
+AFTER DELETE ON Teachers
+FOR EACH ROW
+EXECUTE FUNCTION delete_commentary_on_teacher_delete();
+
+
+
