@@ -104,6 +104,7 @@ CREATE TABLE Classroom(
     capacity INTEGER,
     PRIMARY KEY (id)
 );
+CREATE UNIQUE INDEX Classroom_name_unique ON Classroom (LOWER(name));
 
 CREATE TABLE CONTAINS (
     id_materials BIGINT,
