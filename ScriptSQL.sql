@@ -177,7 +177,7 @@ CREATE TABLE Logs(
     FOREIGN KEY (id_User) REFERENCES Users(id)
 );
 
-CREATE TABLE Reminder(
+CREATE TABLE Reminders(
     id SERIAL,
     id_User BIGINT,
     reminder_text VARCHAR(255),
