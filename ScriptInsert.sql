@@ -89,7 +89,7 @@ EXECUTE FUNCTION delete_absences_on_student_delete();
 CREATE OR REPLACE FUNCTION update_logs_on_user_delete()
 RETURNS TRIGGER AS $$
 BEGIN
-    UPDATE Logs
+    UPDATE ent.Logs
     SET id_User = NULL
     WHERE id_User = OLD.id;
 
@@ -98,7 +98,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER trigger_update_logs_on_user_delete
-AFTER DELETE ON Users
+BEFORE DELETE ON Users
 FOR EACH ROW
 EXECUTE FUNCTION update_logs_on_user_delete();
 
@@ -106,7 +106,7 @@ EXECUTE FUNCTION update_logs_on_user_delete();
 CREATE OR REPLACE FUNCTION update_reminders_on_user_delete()
 RETURNS TRIGGER AS $$
 BEGIN
-    UPDATE Reminders
+    UPDATE ent.Reminders
     SET id_User = NULL
     WHERE id_User = OLD.id;
 
@@ -115,7 +115,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER trigger_update_reminders_on_user_delete
-AFTER DELETE ON Users
+BEFORE DELETE ON Users
 FOR EACH ROW
 EXECUTE FUNCTION update_reminders_on_user_delete();
 
@@ -123,7 +123,7 @@ EXECUTE FUNCTION update_reminders_on_user_delete();
 CREATE OR REPLACE FUNCTION update_courses_on_teacher_delete()
 RETURNS TRIGGER AS $$
 BEGIN
-    UPDATE Courses
+    UPDATE ent.courses
     SET id_Teacher = NULL
     WHERE id_Teacher = OLD.id;
 
@@ -131,8 +131,8 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER trigger_update_courses_on_teacher_delete
-AFTER DELETE ON Teachers
+CREATE OR REPLACE TRIGGER trigger_update_courses_on_teacher_delete
+BEFORE DELETE ON Teachers
 FOR EACH ROW
 EXECUTE FUNCTION update_courses_on_teacher_delete();
 
@@ -140,7 +140,7 @@ EXECUTE FUNCTION update_courses_on_teacher_delete();
 CREATE OR REPLACE FUNCTION delete_commentary_on_teacher_delete()
 RETURNS TRIGGER AS $$
 BEGIN
-    DELETE FROM Commentary
+    DELETE FROM ent.Commentary
     WHERE id_Teacher = OLD.id;
 
     RETURN OLD;
@@ -148,7 +148,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER trigger_delete_commentary_on_teacher_delete
-AFTER DELETE ON Teachers
+BEFORE DELETE ON Teachers
 FOR EACH ROW
 EXECUTE FUNCTION delete_commentary_on_teacher_delete();
 
