@@ -39,6 +39,8 @@ CREATE TABLE Degrees(
     PRIMARY KEY(id)
 );
 
+CREATE UNIQUE INDEX degrees_name_unique ON Degrees (LOWER(name));
+
 CREATE TABLE Trainings(
     id SERIAL,
     name VARCHAR(32),
