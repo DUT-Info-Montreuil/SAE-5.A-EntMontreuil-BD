@@ -13,6 +13,7 @@ CREATE TABLE Roles(
 
 CREATE TABLE Users(
     id SERIAL,
+    trigram VARCHAR(3),
     username VARCHAR(32),
     password VARCHAR(200),
     last_name VARCHAR(32),
@@ -41,16 +42,6 @@ CREATE TABLE Degrees(
 
 CREATE UNIQUE INDEX degrees_name_unique ON Degrees (LOWER(name));
 
-CREATE TABLE Trainings(
-    id SERIAL,
-    name VARCHAR(32),
-    id_Degree BIGINT,
-    PRIMARY KEY (id),
-    FOREIGN KEY (id_Degree) REFERENCES Degrees(id),
-    UNIQUE (id_Degree, name)  -- This enforces the uniqueness of the combination
-);
-
-
 CREATE TABLE Promotions(
     id SERIAL,
     year INTEGER,
@@ -61,13 +52,23 @@ CREATE TABLE Promotions(
     CONSTRAINT unique_year_degree_combination UNIQUE (year, id_Degree)
 );
 
+CREATE TABLE Trainings(
+    id SERIAL,
+    name VARCHAR(32),
+    id_Promotion BIGINT,
+    semester BIGINT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_Promotion) REFERENCES Promotions(id)
+);
+
 
 CREATE TABLE Resources(
     id SERIAL,
     name VARCHAR(32),
-    id_Promotion BIGINT,
+    id_Training BIGINT,
+    color VARCHAR(7),
     PRIMARY KEY(id),
-    FOREIGN KEY(id_Promotion) REFERENCES Promotions(id)
+    FOREIGN KEY(id_Training) REFERENCES Trainings(id)
 );
 
 CREATE TABLE TD(
@@ -200,3 +201,91 @@ CREATE TABLE Commentary(
     FOREIGN KEY(id_Course) REFERENCES Courses(id)
 );
 
+CREATE TABLE Settings(
+    id_User BIGINT,
+    notification_mail BOOLEAN,
+    notification_website BOOLEAN,
+    PRIMARY KEY(id_User),
+    FOREIGN KEY(id_User) REFERENCES Users(id)
+);
+
+--supprime chaque absences de l'étudiant supprimer
+CREATE OR REPLACE FUNCTION delete_absences_on_student_delete()
+RETURNS TRIGGER AS $$
+BEGIN
+    DELETE FROM ent.Absences WHERE id_Student = OLD.id;
+    RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER delete_absences_trigger
+BEFORE DELETE ON ent.Students
+FOR EACH ROW
+EXECUTE FUNCTION delete_absences_on_student_delete();
+
+--met id_user a null dans la table logs quand l'users associé est supprimé
+CREATE OR REPLACE FUNCTION update_logs_on_user_delete()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE ent.Logs
+    SET id_User = NULL
+    WHERE id_User = OLD.id;
+
+    RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER trigger_update_logs_on_user_delete
+BEFORE DELETE ON Users
+FOR EACH ROW
+EXECUTE FUNCTION update_logs_on_user_delete();
+
+--met id_user a null dans la table reminders quand l'users associé est supprimé
+CREATE OR REPLACE FUNCTION update_reminders_on_user_delete()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE ent.Reminders
+    SET id_User = NULL
+    WHERE id_User = OLD.id;
+
+    RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER trigger_update_reminders_on_user_delete
+BEFORE DELETE ON Users
+FOR EACH ROW
+EXECUTE FUNCTION update_reminders_on_user_delete();
+
+----met id_teacher a null dans la table courses quand le teacher associé est supprimé
+CREATE OR REPLACE FUNCTION update_courses_on_teacher_delete()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE ent.courses
+    SET id_Teacher = NULL
+    WHERE id_Teacher = OLD.id;
+
+    RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER trigger_update_courses_on_teacher_delete
+BEFORE DELETE ON Teachers
+FOR EACH ROW
+EXECUTE FUNCTION update_courses_on_teacher_delete();
+
+--supprime les commentaires de l'enseignant associé quand l'enseignant est supprimé
+CREATE OR REPLACE FUNCTION delete_commentary_on_teacher_delete()
+RETURNS TRIGGER AS $$
+BEGIN
+    DELETE FROM ent.Commentary
+    WHERE id_Teacher = OLD.id;
+
+    RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER trigger_delete_commentary_on_teacher_delete
+BEFORE DELETE ON Teachers
+FOR EACH ROW
+EXECUTE FUNCTION delete_commentary_on_teacher_delete();
