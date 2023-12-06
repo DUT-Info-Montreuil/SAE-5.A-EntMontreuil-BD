@@ -13,7 +13,6 @@ CREATE TABLE Roles(
 
 CREATE TABLE Users(
     id SERIAL,
-    trigram VARCHAR(3),
     username VARCHAR(32),
     password VARCHAR(200),
     last_name VARCHAR(32),
