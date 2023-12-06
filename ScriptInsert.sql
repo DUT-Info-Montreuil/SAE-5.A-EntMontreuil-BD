@@ -20,17 +20,19 @@ INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id
 -- Insertion des enseignants
 INSERT INTO Teachers (initial, desktop, id_User) VALUES ('T1', 'Desk1', 4);
 
--- Insertion des formations
-INSERT INTO Trainings (name, id_Degree) VALUES ('Formation1', 1);
-INSERT INTO Trainings (name, id_Degree) VALUES ('Formation2', 2);
 
 -- Insertion des promotions
 INSERT INTO Promotions (year, level, id_Degree) VALUES (2023, 1, 1);
 INSERT INTO Promotions (year, level, id_Degree) VALUES (2022, 2, 2);
 
+
+-- Insertion des formations
+INSERT INTO Trainings (name, id_Promotion) VALUES ('Formation1', 1);
+INSERT INTO Trainings (name, id_Promotion) VALUES ('Formation2', 2);
+
 -- Insertion des ressources
-INSERT INTO Resources (name, id_Promotion) VALUES ('Ressource1', 1);
-INSERT INTO Resources (name, id_Promotion) VALUES ('Ressource2', 2);
+INSERT INTO Resources (name, id_Training) VALUES ('Ressource1', 1);
+INSERT INTO Resources (name, id_Training) VALUES ('Ressource2', 2);
 
 -- Insertion des TD
 INSERT INTO TD (name, id_Promotion, id_Training) VALUES ('TD1', 1, 1);
