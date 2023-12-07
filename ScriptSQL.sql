@@ -304,3 +304,8 @@ CREATE OR REPLACE TRIGGER trigger_delete_commentary_on_teacher_delete
 BEFORE DELETE ON Teachers
 FOR EACH ROW
 EXECUTE FUNCTION delete_commentary_on_teacher_delete();
+
+
+INSERT INTO Roles (name) VALUES ('étudiant')
+INSERT INTO Roles (name) VALUES ('enseignant')
+INSERT INTO Roles (name) VALUES ('utilisateur')
