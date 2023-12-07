@@ -167,8 +167,8 @@ INSERT INTO Logs (id_User, modification) VALUES (1, 'Modification 1');
 INSERT INTO Logs (id_User, modification) VALUES (1, 'Modification 2');
 
 -- Insertion des rappels
-INSERT INTO Reminders (id_user, reminder_text, reminder_date) VALUES (1, 'Rappel pour la réunion', '2023-12-01 09:00:00');
-INSERT INTO Reminders (id_user, reminder_text, reminder_date) VALUES (2, 'Rappel pour examen', '2023-12-02 14:00:00');
+INSERT INTO Reminders (id_user, title, reminder_text, reminder_date) VALUES (1, 'Anglais', 'Rappel pour la réunion', '2023-12-01 09:00:00');
+INSERT INTO Reminders (id_user, title, reminder_text, reminder_date) VALUES (2, 'NoSQL', 'Rappel pour examen', '2023-12-02 14:00:00');
 
 -- Insertion des commentaires
 INSERT INTO Commentary (id_Teacher, id_Course, comment_text) VALUES (1, 1, 'Très bon travail des étudiants.');
