@@ -306,6 +306,6 @@ FOR EACH ROW
 EXECUTE FUNCTION delete_commentary_on_teacher_delete();
 
 
-INSERT INTO Roles (name) VALUES ('étudiant')
-INSERT INTO Roles (name) VALUES ('enseignant')
-INSERT INTO Roles (name) VALUES ('utilisateur')
+INSERT INTO Roles (name) VALUES ('étudiant');
+INSERT INTO Roles (name) VALUES ('enseignant');
+INSERT INTO Roles (name) VALUES ('utilisateur');
