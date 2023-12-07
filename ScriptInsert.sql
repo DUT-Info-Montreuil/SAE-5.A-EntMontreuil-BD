@@ -1,9 +1,9 @@
 SET search_path TO ent;
 -- Insertion des rôles
-INSERT INTO Roles (name) VALUES ('admin');
-INSERT INTO Roles (name) VALUES ('user');
-INSERT INTO Roles (name) VALUES ('student');
-INSERT INTO Roles (name) VALUES ('teacher');
+INSERT INTO Roles (name) VALUES ('étudiant')
+INSERT INTO Roles (name) VALUES ('enseignant')
+INSERT INTO Roles (name) VALUES ('CCRI')
+INSERT INTO Roles (name) VALUES ('utilisateur')
 
 -- Insertion des degrés
 INSERT INTO Degrees (name) VALUES ('INFO');

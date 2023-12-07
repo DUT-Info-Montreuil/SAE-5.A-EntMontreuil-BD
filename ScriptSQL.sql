@@ -21,6 +21,7 @@ CREATE TABLE Users(
     id_Role BIGINT,
     PRIMARY KEY(id),
     isAdmin BOOLEAN,
+    isTTManager BOOLEAN,
     FOREIGN KEY(id_Role) REFERENCES Roles(id)
 );
 
