@@ -17,15 +17,14 @@ INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id
 INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('student4', 'password', 'Alice', 'Smith', 'alice.smith@example.com', false, 3);
 INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('student5', 'password', 'Bob', 'Johnson', 'bob.johnson@example.com', false, 3);
 
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher', 'password', 'Prof', 'Un', 'teacher@example.com', false, 4);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher2', 'password', 'Prof', 'Deux', 'teacher2@example.com', false, 4);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher3', 'password', 'Prof', 'Trois', 'teacher3@example.com', false, 4);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teache4', 'password', 'Prof', 'Quatre', 'teacher4@example.com', false, 4);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher5', 'password', 'Prof', 'Cinq', 'teacher5@example.com', false, 4);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher6', 'password', 'Prof', 'Six', 'teacher6@example.com', false, 4);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher7', 'password', 'Prof', 'Sept', 'teacher7@example.com', false, 4);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher8', 'password', 'Prof', 'Huit', 'teacher8@example.com', false, 4);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher9', 'password', 'Prof', 'Neuf', 'teacher9@example.com', false, 4);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher', 'password', 'Prof', 'Un', 'teacher@example.com', false, 3);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher2', 'password', 'Prof', 'Deux', 'teacher2@example.com', false, 3);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teache4', 'password', 'Prof', 'Quatre', 'teacher4@example.com', false, 3);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher5', 'password', 'Prof', 'Cinq', 'teacher5@example.com', false, 3);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher6', 'password', 'Prof', 'Six', 'teacher6@example.com', false, 3);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher7', 'password', 'Prof', 'Sept', 'teacher7@example.com', false, 3);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher8', 'password', 'Prof', 'Huit', 'teacher8@example.com', false, 3);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher9', 'password', 'Prof', 'Neuf', 'teacher9@example.com', false, 3);
 
 -- Insertion des enseignants
 INSERT INTO Teachers (initial, desktop, id_User) VALUES ('T1', 'Desk1', 9);
@@ -36,7 +35,6 @@ INSERT INTO Teachers (initial, desktop, id_User) VALUES ('T5', 'Desk5', 13);
 INSERT INTO Teachers (initial, desktop, id_User) VALUES ('T6', 'Desk6', 14);
 INSERT INTO Teachers (initial, desktop, id_User) VALUES ('T7', 'Desk7', 15);
 INSERT INTO Teachers (initial, desktop, id_User) VALUES ('T8', 'Desk8', 16);
-INSERT INTO Teachers (initial, desktop, id_User) VALUES ('T9', 'Desk9', 17);
 
 -- Insertion des promotions
 INSERT INTO Promotions (year, level, id_Degree) VALUES (2022, 1, 1);
@@ -131,7 +129,6 @@ INSERT INTO Courses (startTime, endTime, dateCourse, control, id_Resource, id_Tp
 INSERT INTO Courses (startTime, endTime, dateCourse, control, id_Resource, id_Tp, id_Td, id_Promotion, id_Teacher, id_classroom) VALUES ('10:00:00', '11:00:00', '2023-11-16', false, 2, 1, NULL, NULL, 6, 11);
 INSERT INTO Courses (startTime, endTime, dateCourse, control, id_Resource, id_Tp, id_Td, id_Promotion, id_Teacher, id_classroom) VALUES ('11:00:00', '12:30:00', '2023-11-16', false, 1, 1, NULL, NULL, 7, 10);
 INSERT INTO Courses (startTime, endTime, dateCourse, control, id_Resource, id_Tp, id_Td, id_Promotion, id_Teacher, id_classroom) VALUES ('13:30:00', '15:30:00', '2023-11-16', false, 2, NULL, 1, NULL, 8, 1);
-INSERT INTO Courses (startTime, endTime, dateCourse, control, id_Resource, id_Tp, id_Td, id_Promotion, id_Teacher, id_classroom) VALUES ('15:30:00', '17:30:00', '2023-11-16', false, 1, NULL, 1, NULL, 9, 1);
 
 INSERT INTO Courses (startTime, endTime, dateCourse, control, id_Resource, id_Tp, id_Td, id_Promotion, id_Teacher, id_classroom) VALUES ('09:00:00', '13:00:00', '2023-11-17', true, 2, NULL, 1, NULL, 1, 1);
 INSERT INTO Courses (startTime, endTime, dateCourse, control, id_Resource, id_Tp, id_Td, id_Promotion, id_Teacher, id_classroom) VALUES ('14:00:00', '15:00:00', '2023-11-17', false, 1, NULL, NULL, 1, 2, 7);
@@ -175,7 +172,3 @@ INSERT INTO Reminders (id_user, reminder_text, reminder_date) VALUES (2, 'Rappel
 
 -- Insertion des commentaires
 INSERT INTO Commentary (id_Teacher, id_Course, comment_text) VALUES (1, 1, 'Très bon travail des étudiants.');
-
-
-
-
