@@ -208,6 +208,21 @@ CREATE TABLE Settings(
     FOREIGN KEY(id_User) REFERENCES Users(id)
 );
 
+create table Notifications
+(
+    id           serial
+        primary key,
+    id_user      bigint                                 not null
+        references ent.users,
+    content      text                                   not null,
+    is_read      boolean                  default false not null,
+    created_at   timestamp with time zone default CURRENT_TIMESTAMP,
+    title        text                                   not null,
+    icon         text,
+    "icon-color" text,
+    route        text
+);
+
 --supprime chaque absences de l'étudiant supprimer
 CREATE OR REPLACE FUNCTION delete_absences_on_student_delete()
 RETURNS TRIGGER AS $$
