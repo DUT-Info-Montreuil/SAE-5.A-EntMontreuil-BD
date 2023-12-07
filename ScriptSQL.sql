@@ -184,6 +184,7 @@ CREATE TABLE Logs(
 CREATE TABLE Reminders(
     id SERIAL,
     id_User BIGINT,
+    title VARCHAR(50),
     reminder_text VARCHAR(255),
     reminder_date TIMESTAMP,
     PRIMARY KEY(id),
