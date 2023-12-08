@@ -132,10 +132,12 @@ CREATE TABLE Courses(
     id_Tp BIGINT,
     id_Td BIGINT,
     id_Promotion BIGINT,
+    id_Training BIGINT,
     id_Teacher BIGINT,
     id_classroom BIGINT,
     PRIMARY KEY (id),
     FOREIGN KEY (id_classroom) REFERENCES Classroom(id),
+    FOREIGN KEY (id_Training) REFERENCES Trainings(id),
     FOREIGN KEY (id_Resource) REFERENCES Resources(id),
     FOREIGN KEY (id_Tp) REFERENCES TP(id),
     FOREIGN KEY (id_Td) REFERENCES TD(id),
@@ -307,6 +309,24 @@ FOR EACH ROW
 EXECUTE FUNCTION delete_commentary_on_teacher_delete();
 
 
+
+-- ajoute les settings a true a chaque fois qu'un users est ajouté
+CREATE OR REPLACE FUNCTION insert_settings_on_user_insert()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO ent.Settings (id_User, notification_mail, notification_website)
+    VALUES (NEW.id, TRUE, TRUE);
+    
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER insert_settings_trigger
+AFTER INSERT ON ent.Users
+FOR EACH ROW
+EXECUTE FUNCTION insert_settings_on_user_insert();
+
+-- insert nécessaire a l'api
 INSERT INTO Roles (name) VALUES ('étudiant');
 INSERT INTO Roles (name) VALUES ('enseignant');
 INSERT INTO Roles (name) VALUES ('utilisateur');
