@@ -6,25 +6,25 @@ INSERT INTO Degrees (name) VALUES ('CLIO');
 INSERT INTO Degrees (name) VALUES ('INFOCOM');
 
 -- Insertion des utilisateurs
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('admin', 'password', 'Admin', 'Admin', 'admin@example.com', true, 1);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('admin2', 'password', 'Admin2', 'Admin2', 'admin2@example.com', true, 1);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('admin', 'password', 'Admin', 'Admin', 'admin@example.com', true, 3);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('admin2', 'password', 'Admin2', 'Admin2', 'admin2@example.com', true, 3);
 
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('user', 'password', 'User', 'User', 'user@example.com', false, 2);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('user', 'password', 'User', 'User', 'user@example.com', false, 3);
 
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('student', 'password', 'Yanis', 'Hamani', 'yanishamani@example.com', true, 3);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('student2', 'password', 'John', 'Doe', 'john.doe@example.com', false, 3);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('student3', 'password', 'Jane', 'Smith', 'jane.smith@example.com', false, 3);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('student4', 'password', 'Alice', 'Smith', 'alice.smith@example.com', false, 3);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('student5', 'password', 'Bob', 'Johnson', 'bob.johnson@example.com', false, 3);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('student', 'password', 'Yanis', 'Hamani', 'yanishamani@example.com', true, 1);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('student2', 'password', 'John', 'Doe', 'john.doe@example.com', false, 1);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('student3', 'password', 'Jane', 'Smith', 'jane.smith@example.com', false, 1);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('student4', 'password', 'Alice', 'Smith', 'alice.smith@example.com', false, 1);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('student5', 'password', 'Bob', 'Johnson', 'bob.johnson@example.com', false, 1);
 
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher', 'password', 'Prof', 'Un', 'teacher@example.com', false, 3);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher2', 'password', 'Prof', 'Deux', 'teacher2@example.com', false, 3);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teache4', 'password', 'Prof', 'Quatre', 'teacher4@example.com', false, 3);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher5', 'password', 'Prof', 'Cinq', 'teacher5@example.com', false, 3);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher6', 'password', 'Prof', 'Six', 'teacher6@example.com', false, 3);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher7', 'password', 'Prof', 'Sept', 'teacher7@example.com', false, 3);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher8', 'password', 'Prof', 'Huit', 'teacher8@example.com', false, 3);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher9', 'password', 'Prof', 'Neuf', 'teacher9@example.com', false, 3);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher', 'password', 'Prof', 'Un', 'teacher@example.com', false, 2);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher2', 'password', 'Prof', 'Deux', 'teacher2@example.com', false, 2);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teache4', 'password', 'Prof', 'Quatre', 'teacher4@example.com', false, 2);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher5', 'password', 'Prof', 'Cinq', 'teacher5@example.com', false, 2);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher6', 'password', 'Prof', 'Six', 'teacher6@example.com', false, 2);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher7', 'password', 'Prof', 'Sept', 'teacher7@example.com', false, 2);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher8', 'password', 'Prof', 'Huit', 'teacher8@example.com', false, 2);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin, id_Role) VALUES ('teacher9', 'password', 'Prof', 'Neuf', 'teacher9@example.com', false, 2);
 
 -- Insertion des enseignants
 INSERT INTO Teachers (initial, desktop, id_User) VALUES ('T1', 'Desk1', 9);
