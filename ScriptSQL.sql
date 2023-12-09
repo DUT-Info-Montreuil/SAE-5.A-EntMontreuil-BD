@@ -133,16 +133,12 @@ CREATE TABLE Courses(
     id_Td BIGINT,
     id_Promotion BIGINT,
     id_Training BIGINT,
-    id_Teacher BIGINT,
-    id_classroom BIGINT,
     PRIMARY KEY (id),
-    FOREIGN KEY (id_classroom) REFERENCES Classroom(id),
     FOREIGN KEY (id_Training) REFERENCES Trainings(id),
     FOREIGN KEY (id_Resource) REFERENCES Resources(id),
     FOREIGN KEY (id_Tp) REFERENCES TP(id),
     FOREIGN KEY (id_Td) REFERENCES TD(id),
     FOREIGN KEY (id_Promotion) REFERENCES Promotions(id),
-    FOREIGN KEY (id_Teacher) REFERENCES Teachers(id)
 );
 
 
