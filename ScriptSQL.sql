@@ -146,6 +146,25 @@ CREATE TABLE Courses(
 );
 
 
+CREATE TABLE Courses_Teachers(
+    id_Course BIGINT,
+    id_Classroom BIGINT,
+    PRIMARY KEY (id_Classroom, id_Teacher),
+    FOREIGN KEY (id_Classroom) REFERENCES Classroom(id),
+    FOREIGN KEY (id_Teacher) REFERENCES Teachers(id)
+    UNIQUE (id_Classroom, id_Teacher)
+);
+
+CREATE TABLE Courses_Classrooms(
+    id_Course BIGINT,
+    id_Teacher BIGINT,
+    PRIMARY KEY (id_Course, id_Teacher),
+    FOREIGN KEY (id_Course) REFERENCES Courses(id),
+    FOREIGN KEY (id_Teacher) REFERENCES Teachers(id)
+    UNIQUE (id_Course, id_Teacher)
+);
+
+
 CREATE TABLE Students (
     id SERIAL,
     apprentice BOOLEAN,
