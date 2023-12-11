@@ -49,7 +49,7 @@ CREATE TABLE Promotions(
     id_Degree BIGINT,
     PRIMARY KEY(id),
     FOREIGN KEY(id_Degree) REFERENCES Degrees(id),
-    CONSTRAINT unique_year_degree_combination UNIQUE (year, id_Degree)
+    CONSTRAINT unique_year_degree_level_combination UNIQUE (year,level, id_Degree)
 );
 
 CREATE TABLE Trainings(
@@ -146,16 +146,16 @@ CREATE TABLE Courses_Classrooms(
     id_Course BIGINT,
     id_Classroom BIGINT,
     PRIMARY KEY (id_Course,id_Classroom),
-    FOREIGN KEY (id_Classroom) REFERENCES Classroom(id),
-    FOREIGN KEY (id_Course) REFERENCES Courses(id)
+    FOREIGN KEY (id_Classroom) REFERENCES Classroom(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_Course) REFERENCES Courses(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Courses_Teachers(
     id_Course BIGINT,
     id_Teacher BIGINT,
     PRIMARY KEY (id_Course, id_Teacher),
-    FOREIGN KEY (id_Course) REFERENCES Courses(id),
-    FOREIGN KEY (id_Teacher) REFERENCES Teachers(id)
+    FOREIGN KEY (id_Course) REFERENCES Courses(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_Teacher) REFERENCES Teachers(id) ON DELETE CASCADE
 );
 
 
