@@ -222,7 +222,7 @@ CREATE TABLE Settings(
     notification_mail BOOLEAN,
     notification_website BOOLEAN,
     PRIMARY KEY(id_User),
-    FOREIGN KEY(id_User) REFERENCES Users(id)
+    FOREIGN KEY(id_User) REFERENCES Users(id) ON DELETE CASCADE
 );
 
 create table Notifications
