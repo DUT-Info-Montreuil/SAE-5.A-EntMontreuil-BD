@@ -323,21 +323,21 @@ FOR EACH ROW
 EXECUTE FUNCTION insert_settings_on_user_insert();
 
 -- met id_role a 3 quand un role est supprimer, pour tous les utilisateurs qui avait ce role
-CREATE OR REPLACE FUNCTION ent.update_users_role()
+CREATE OR REPLACE FUNCTION update_users_role()
 RETURNS TRIGGER AS $$
 BEGIN
-    UPDATE ent.users
-    SET id_role = 3 -- Mettre l'ID du rôle que vous souhaitez assigner après la suppression
-    WHERE id_role = OLD.id; -- OLD.id représente l'ancien ID du rôle supprimé
+    UPDATE ent.Users
+    SET id_role = 3 
+    WHERE id_role = OLD.id; 
 
-    RETURN NEW;
+    RETURN OLD;
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER on_delete_role
-BEFORE DELETE ON ent.roles
+CREATE or REPLACE TRIGGER on_delete_role
+BEFORE DELETE ON ent.Roles
 FOR EACH ROW
-EXECUTE FUNCTION ent.update_users_role();
+EXECUTE FUNCTION update_users_role();
 
 -- insert nécessaire a l'api
 INSERT INTO Roles (name) VALUES ('étudiant');
