@@ -25,19 +25,19 @@ INSERT INTO Promotions (year, level, id_Degree) VALUES (2022, 1, 2);
 
 -- Insertion des formations
 INSERT INTO Trainings (name, id_Promotion) VALUES ('Parcours A', 1);
-INSERT INTO Trainings (name, id_Promotion) VALUES ('Parcours B', 1);
+INSERT INTO Trainings (name, id_Promotion) VALUES ('Parcours C', 1);
 INSERT INTO Trainings (name, id_Promotion) VALUES ('Parcours Initial', 2);
 
 -- Insertion des ressources
-INSERT INTO Resources (name, id_Training) VALUES ('Anglais', 1);
-INSERT INTO Resources (name, id_Training) VALUES ('Communication', 1);
-INSERT INTO Resources (name, id_Training) VALUES ('Modélisations', 1);
-INSERT INTO Resources (name, id_Training) VALUES ('Analyse de donnés', 2);
-INSERT INTO Resources (name, id_Training) VALUES ('IA', 2);
-INSERT INTO Resources (name, id_Training) VALUES ('NoSQL', 2);
-INSERT INTO Resources (name, id_Training) VALUES ('Culture juridique', 3);
-INSERT INTO Resources (name, id_Training) VALUES ('Langue vivante 1', 3);
-INSERT INTO Resources (name, id_Training) VALUES ('Fondamentaux du marketing', 3);
+INSERT INTO Resources (name, id_Training, color) VALUES ('Anglais', 1, '#40E0D0');
+INSERT INTO Resources (name, id_Training, color) VALUES ('Communication', 1, '#800080');
+INSERT INTO Resources (name, id_Training, color) VALUES ('Modélisations', 1 , '#FA8072');
+INSERT INTO Resources (name, id_Training, color) VALUES ('Analyse de donnés', 2, '#FFD700');
+INSERT INTO Resources (name, id_Training, color) VALUES ('IA', 2, '#E6E6FA');
+INSERT INTO Resources (name, id_Training, color) VALUES ('NoSQL', 2, '#808000');
+INSERT INTO Resources (name, id_Training, color) VALUES ('Culture juridique', 3, '#00FFFF');
+INSERT INTO Resources (name, id_Training, color) VALUES ('Langue vivante 1', 3, '#4B0082');
+INSERT INTO Resources (name, id_Training, color) VALUES ('Fondamentaux du marketing', 3, '#FF7F50');
 
 -- Insertion des TD
 INSERT INTO TD (name, id_Promotion, id_Training) VALUES ('TDA', 1, 1);
@@ -63,12 +63,12 @@ INSERT INTO Classroom (name, capacity) VALUES ('Amphi 1', 100);
 INSERT INTO Classroom (name, capacity) VALUES ('Amphi 2', 100);
 
 -- Insertion des matériaux dans les salles
-INSERT INTO CONTAINS (id_materials, id_classroom, quantity) VALUES (1, 1, 30)
-INSERT INTO CONTAINS (id_materials, id_classroom, quantity) VALUES (4, 1, 1)
-INSERT INTO CONTAINS (id_materials, id_classroom, quantity) VALUES (3, 2, 30)
-INSERT INTO CONTAINS (id_materials, id_classroom, quantity) VALUES (4, 2, 1)
-INSERT INTO CONTAINS (id_materials, id_classroom, quantity) VALUES (4, 3, 1)
-INSERT INTO CONTAINS (id_materials, id_classroom, quantity) VALUES (4, 4, 1)
+INSERT INTO CONTAINS (id_materials, id_classroom, quantity) VALUES (1, 1, 30);
+INSERT INTO CONTAINS (id_materials, id_classroom, quantity) VALUES (4, 1, 1);
+INSERT INTO CONTAINS (id_materials, id_classroom, quantity) VALUES (3, 2, 30);
+INSERT INTO CONTAINS (id_materials, id_classroom, quantity) VALUES (4, 2, 1);
+INSERT INTO CONTAINS (id_materials, id_classroom, quantity) VALUES (4, 3, 1);
+INSERT INTO CONTAINS (id_materials, id_classroom, quantity) VALUES (4, 4, 1);
 
 -- Insertion des cours
 INSERT INTO Courses (startTime, endTime, dateCourse, control, id_Resource, id_Tp, id_Td, id_Promotion, id_Training) VALUES ('09:00', '10:00', '2023-12-15', false, 1, NULL, NULL, 1, NULL);
@@ -78,20 +78,20 @@ INSERT INTO Courses (startTime, endTime, dateCourse, control, id_Resource, id_Tp
 INSERT INTO Courses (startTime, endTime, dateCourse, control, id_Resource, id_Tp, id_Td, id_Promotion, id_Training) VALUES ('09:00', '16:00', '2023-12-16', false, 7, NULL, NULL, 2, NULL);
 
 -- Isertion des salles dans les cours
-INSERT INTO Courses_Classrooms (id_Course, id_Classroom) VALUES (1, 3)
-INSERT INTO Courses_Classrooms (id_Course, id_Classroom) VALUES (2, 3)
-INSERT INTO Courses_Classrooms (id_Course, id_Classroom) VALUES (3, 1)
-INSERT INTO Courses_Classrooms (id_Course, id_Classroom) VALUES (3, 2)
-INSERT INTO Courses_Classrooms (id_Course, id_Classroom) VALUES (4, 3)
-INSERT INTO Courses_Classrooms (id_Course, id_Classroom) VALUES (5, 4)
+INSERT INTO Courses_Classrooms (id_Course, id_Classroom) VALUES (1, 3);
+INSERT INTO Courses_Classrooms (id_Course, id_Classroom) VALUES (2, 3);
+INSERT INTO Courses_Classrooms (id_Course, id_Classroom) VALUES (3, 1);
+INSERT INTO Courses_Classrooms (id_Course, id_Classroom) VALUES (3, 2);
+INSERT INTO Courses_Classrooms (id_Course, id_Classroom) VALUES (4, 3);
+INSERT INTO Courses_Classrooms (id_Course, id_Classroom) VALUES (5, 4);
 
 -- Isertion des enseignants dans les cours
-INSERT INTO Courses_Teachers (id_Course, id_Teacher) VALUES (1, 1)
-INSERT INTO Courses_Teachers (id_Course, id_Teacher) VALUES (2, 1)
-INSERT INTO Courses_Teachers (id_Course, id_Teacher) VALUES (3, 1)
-INSERT INTO Courses_Teachers (id_Course, id_Teacher) VALUES (4, 2)
-INSERT INTO Courses_Teachers (id_Course, id_Teacher) VALUES (5, 1)
-INSERT INTO Courses_Teachers (id_Course, id_Teacher) VALUES (5, 2)
+INSERT INTO Courses_Teachers (id_Course, id_Teacher) VALUES (1, 1);
+INSERT INTO Courses_Teachers (id_Course, id_Teacher) VALUES (2, 1);
+INSERT INTO Courses_Teachers (id_Course, id_Teacher) VALUES (3, 1);
+INSERT INTO Courses_Teachers (id_Course, id_Teacher) VALUES (4, 2);
+INSERT INTO Courses_Teachers (id_Course, id_Teacher) VALUES (5, 1);
+INSERT INTO Courses_Teachers (id_Course, id_Teacher) VALUES (5, 2);
 
 -- Insertion des étudiants
 INSERT INTO Students (nip, ine, apprentice, id_User, id_Td, id_Tp, id_Promotion) VALUES ('12345678','7894558A03', true, 3, 1, 1, 1);
