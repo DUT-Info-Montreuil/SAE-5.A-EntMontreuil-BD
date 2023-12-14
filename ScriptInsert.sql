@@ -102,8 +102,8 @@ INSERT INTO Absences (id_Student, id_Course, reason, document, justify) VALUES (
 INSERT INTO Absences (id_Student, id_Course, reason, document, justify) VALUES (1, 2, 'COVID-19', NULL, true);
 
 -- Insertion des logs
-INSERT INTO Logs (id_User, modification) VALUES (1, "Ajout de l'utilisateur étudiant1");
-INSERT INTO Logs (id_User, modification) VALUES (1, "Ajout de l'utilisateur étudiant2");
+INSERT INTO Logs (id_User, modification) VALUES (1, 'Ajout de l utilisateur étudiant1');
+INSERT INTO Logs (id_User, modification) VALUES (1, 'Ajout de l utilisateur étudiant2');
 
 -- Insertion des rappels
 INSERT INTO Reminders (id_User, title, reminder_text, reminder_date) VALUES (3, 'DEVOIR', 'Finir le devoir de modélisation', '2023-12-15 09:00:00');
@@ -112,3 +112,7 @@ INSERT INTO Reminders (id_User, title, reminder_text, reminder_date) VALUES (1, 
 -- Insertion des commentaires
 INSERT INTO Commentary (id_Teacher, id_Course, comment_text) VALUES (1, 1, 'Bonjour, je serais en retard à ce cours, peux-tu avertire les élèves ?');
 INSERT INTO Commentary (id_Teacher, id_Course, comment_text) VALUES (2, 1, 'Pas de soucis');
+
+-- Insertion des appels
+INSERT INTO Calls (id_Course, id_Student, is_present) VALUES (1, 1, false);
+INSERT INTO Calls (id_Course, id_Student, is_present) VALUES (5, 2, true);
