@@ -225,16 +225,6 @@ CREATE TABLE Settings(
     FOREIGN KEY(id_User) REFERENCES Users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE Calls (
-    id SERIAL,
-    id_Course BIGINT,
-    id_Student BIGINT,
-    is_present BOOLEAN,
-    PRIMARY KEY (id),
-    FOREIGN KEY (id_Course) REFERENCES Courses(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_Student) REFERENCES Students(id) ON DELETE CASCADE
-);
-
 create table Notifications
 (
     id           serial
