@@ -208,13 +208,15 @@ CREATE TABLE Reminders(
 
 CREATE TABLE Commentary(
     id SERIAL,
-    id_Teacher BIGINT,
-    id_Course BIGINT,
+    id_User BIGINT,
+    id_Degree BIGINT,
+    week_number INT,
+    title VARCHAR(50),
     comment_text TEXT,
     modification_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY(id),
-    FOREIGN KEY(id_Teacher) REFERENCES Teachers(id),
-    FOREIGN KEY(id_Course) REFERENCES Courses(id)
+    FOREIGN KEY(id_User) REFERENCES Users(id)
+    FOREIGN KEY(id_Degree) REFERENCES Degrees(id)
 );
 
 CREATE TABLE Settings(
@@ -288,21 +290,21 @@ BEFORE DELETE ON Users
 FOR EACH ROW
 EXECUTE FUNCTION update_reminders_on_user_delete();
 
---supprime les commentaires de l'enseignant associé quand l'enseignant est supprimé
-CREATE OR REPLACE FUNCTION delete_commentary_on_teacher_delete()
+--supprime les commentaires de l'enseignant associé quand l'user est supprimé
+CREATE OR REPLACE FUNCTION delete_commentary_on_user_delete()
 RETURNS TRIGGER AS $$
 BEGIN
     DELETE FROM ent.Commentary
-    WHERE id_Teacher = OLD.id;
+    WHERE id_User = OLD.id;
 
     RETURN OLD;
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE TRIGGER trigger_delete_commentary_on_teacher_delete
-BEFORE DELETE ON Teachers
+CREATE OR REPLACE TRIGGER trigger_delete_commentary_on_user_delete
+BEFORE DELETE ON Users
 FOR EACH ROW
-EXECUTE FUNCTION delete_commentary_on_teacher_delete();
+EXECUTE FUNCTION delete_commentary_on_user_delete();
 
 
 
