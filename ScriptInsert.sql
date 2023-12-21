@@ -12,21 +12,21 @@ INSERT INTO Users (username, password, last_name, first_name, email, isAdmin,isT
 INSERT INTO Users (username, password, last_name, first_name, email, isAdmin,isTTManager, id_Role) VALUES ('responsable_edt', 'password', 'Prénom', 'Nom', 'responsable_edt@example.com', false,true, 3);
 INSERT INTO Users (username, password, last_name, first_name, email, isAdmin,isTTManager, id_Role) VALUES ('etudiant1', 'password', 'Prénom', 'Nom', 'etudiant1@example.com', false,false, 1);
 INSERT INTO Users (username, password, last_name, first_name, email, isAdmin,isTTManager, id_Role) VALUES ('etudiant2', 'password', 'Prénom', 'Nom', 'etudiant2@example.com', false,false, 1);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin,isTTManager, id_Role) VALUES ('enseignant1', 'password', 'Prénom', 'Nom', 'enseignant1@example.com', false,true, 2);
-INSERT INTO Users (username, password, last_name, first_name, email, isAdmin,isTTManager, id_Role) VALUES ('enseignant2', 'password', 'Prénom', 'Nom', 'enseignant2@example.com', true,false, 2);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin,isTTManager, id_Role) VALUES ('enseignant1', 'password', 'Mario', 'CATALDI', 'enseignant1@example.com', false,true, 2);
+INSERT INTO Users (username, password, last_name, first_name, email, isAdmin,isTTManager, id_Role) VALUES ('enseignant2', 'password', 'Amelie', 'GOLVEN', 'enseignant2@example.com', true,false, 2);
 
 -- Insertion des enseignants
-INSERT INTO Teachers (initial, desktop, id_User) VALUES ('EN1', 'A1-07', 5);
-INSERT INTO Teachers (initial, desktop, id_User) VALUES ('EN2', 'A1-07', 6);
+INSERT INTO Teachers (initial, desktop, id_User) VALUES ('MC', 'A1-07', 5);
+INSERT INTO Teachers (initial, desktop, id_User) VALUES ('AGO', 'A1-07', 6);
 
 -- Insertion des promotions
 INSERT INTO Promotions (year, level, id_Degree) VALUES (2022, 3, 1);
 INSERT INTO Promotions (year, level, id_Degree) VALUES (2022, 1, 2);
 
 -- Insertion des formations
-INSERT INTO Trainings (name, id_Promotion) VALUES ('Parcours A', 1);
-INSERT INTO Trainings (name, id_Promotion) VALUES ('Parcours C', 1);
-INSERT INTO Trainings (name, id_Promotion) VALUES ('Parcours Initial', 2);
+INSERT INTO Trainings (name, id_Promotion,semester) VALUES ('Parcours A', 1,1);
+INSERT INTO Trainings (name, id_Promotion,semester) VALUES ('Parcours C', 1,1);
+INSERT INTO Trainings (name, id_Promotion,semester) VALUES ('Parcours Initial', 2,1);
 
 -- Insertion des ressources
 INSERT INTO Resources (name, id_Training, color) VALUES ('Anglais', 1, '#40E0D0');
