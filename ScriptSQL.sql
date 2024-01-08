@@ -210,7 +210,7 @@ CREATE TABLE Commentary(
     id SERIAL,
     id_User BIGINT,
     id_Degree BIGINT,
-    week_number INT,
+    date STRING,
     title VARCHAR(50),
     comment_text TEXT,
     modification_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
