@@ -209,14 +209,14 @@ CREATE TABLE Reminders(
 CREATE TABLE Commentary(
     id SERIAL,
     id_User BIGINT,
-    id_Degree BIGINT,
+    id_Promotion BIGINT,
     date DATE,
     title VARCHAR(50),
     comment_text TEXT,
     modification_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY(id),
     FOREIGN KEY(id_User) REFERENCES Users(id),
-    FOREIGN KEY(id_Degree) REFERENCES Degrees(id)
+    FOREIGN KEY(id_Promotion) REFERENCES Promotions(id)
 );
 
 CREATE TABLE Settings(
