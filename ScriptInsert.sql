@@ -1,12 +1,10 @@
-SET search_path TO ent;
-
-
 -- Insertion des degrés
-INSERT INTO Degrees (name) VALUES ('INFO');
-INSERT INTO Degrees (name) VALUES ('GACO');
-INSERT INTO Degrees (name) VALUES ('QLIO');
-INSERT INTO Degrees (name) VALUES ('INFO-COM');
+INSERT INTO ent.Degrees (name) VALUES ('INFO');
+INSERT INTO ent.Degrees (name) VALUES ('GACO');
+INSERT INTO ent.Degrees (name) VALUES ('QLIO');
+INSERT INTO ent.Degrees (name) VALUES ('INFO-COM');
 
+SET search_path TO ent;
 -- Insertion des utilisateurs
 INSERT INTO Users (username, password, last_name, first_name, email, isAdmin,isTTManager, id_Role) VALUES ('admin', 'password', 'Prénom', 'Nom', 'admin@example.com', true,true, 3);
 INSERT INTO Users (username, password, last_name, first_name, email, isAdmin,isTTManager, id_Role) VALUES ('responsable_edt', 'password', 'Prénom', 'Nom', 'responsable_edt@example.com', false,true, 3);
@@ -108,7 +106,3 @@ INSERT INTO Logs (id_User, modification) VALUES (1, 'Ajout de l utilisateur étu
 -- Insertion des rappels
 INSERT INTO Reminders (id_User, title, reminder_text, reminder_date) VALUES (3, 'DEVOIR', 'Finir le devoir de modélisation', '2023-12-15 09:00:00');
 INSERT INTO Reminders (id_User, title, reminder_text, reminder_date) VALUES (1, 'RÉUNION', 'Rappel pour la réunion', '2023-12-26 13:00:00');
-
--- Insertion des commentaires
-INSERT INTO Commentary (id_Teacher, id_Course, comment_text) VALUES (1, 1, 'Bonjour, je serais en retard à ce cours, peux-tu avertire les élèves ?');
-INSERT INTO Commentary (id_Teacher, id_Course, comment_text) VALUES (2, 1, 'Pas de soucis');
